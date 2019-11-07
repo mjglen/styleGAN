@@ -74,7 +74,15 @@ def main():
             img.save(os.path.join(args.generated_images_dir, f'{img_name}.png'), 'PNG')
             np.save(os.path.join(args.dlatent_dir, f'{img_name}.npy'), dlatent)
 
+        x = json.dumps (generated_dlatents)
+        y = x.encode('utf-8')
+        with open('example.txt', 'w') as f:
+            f.write(str(y))
+
+        files.download('example.txt')
         generator.reset_dlatents()
+        
+     
 
 
 if __name__ == "__main__":
