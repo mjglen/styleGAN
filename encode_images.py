@@ -7,6 +7,7 @@ import numpy as np
 import dnnlib
 import dnnlib.tflib as tflib
 import config
+import json
 from encoder.generator_model import Generator
 from encoder.perceptual_model import PerceptualModel
 
