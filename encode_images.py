@@ -7,6 +7,7 @@ import numpy as np
 import dnnlib
 import dnnlib.tflib as tflib
 import config
+import json
 from encoder.generator_model import Generator
 from encoder.perceptual_model import PerceptualModel
 
@@ -72,8 +73,13 @@ def main():
             img = PIL.Image.fromarray(img_array, 'RGB')
             img.save(os.path.join(args.generated_images_dir, f'{img_name}.png'), 'PNG')
             np.save(os.path.join(args.dlatent_dir, f'{img_name}.npy'), dlatent)
-
-        generator.reset_dlatents()
+            
+            x = json.dumps (generated_dlatents)
+            y = x.encode('utf-8')
+            with open('example.txt', 'w') as f:
+                f.write(str(y))
+            files.download('example.txt')
+         generator.reset_dlatents()
 
 
 if __name__ == "__main__":
