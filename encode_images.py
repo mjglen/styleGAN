@@ -78,8 +78,11 @@ def main():
         y = x.encode('utf-8')
         with open('example.txt', 'w') as f:
             f.write(str(y))
+          
 
         files.download('example.txt')
+        myLatents = generated_dlatents
+        print("ping")
         generator.reset_dlatents()
         
      
